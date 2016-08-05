@@ -11,18 +11,18 @@
 		33831CC31A9CFCDB00B124F1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33831CBF1A9CFCDB00B124F1 /* Images.xcassets */; };
 		33831CC41A9CFCDB00B124F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33831CC01A9CFCDB00B124F1 /* Main.storyboard */; };
 		33831CC51A9CFCDB00B124F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33831CC11A9CFCDB00B124F1 /* ViewController.swift */; };
-		33C69F161D26BEE100ABB47A /* PusherSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C69F111D26BEB100ABB47A /* PusherSwift.framework */; };
-		33C69F181D26C21600ABB47A /* PusherSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33C69F111D26BEB100ABB47A /* PusherSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		33F9905F1D5499060037E8C2 /* PusherSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33F9905E1D5499060037E8C2 /* PusherSwift.framework */; };
+		33F990601D5499060037E8C2 /* PusherSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 33F9905E1D5499060037E8C2 /* PusherSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		33C69F191D26C21600ABB47A /* Embed Frameworks */ = {
+		33F990611D5499060037E8C2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				33C69F181D26C21600ABB47A /* PusherSwift.framework in Embed Frameworks */,
+				33F990601D5499060037E8C2 /* PusherSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +39,7 @@
 		33831CC01A9CFCDB00B124F1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Example/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		33831CC11A9CFCDB00B124F1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Example/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		33C69F111D26BEB100ABB47A /* PusherSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PusherSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/PusherSwift-cifrlthdfybbcedmlylirqthvkky/Build/Products/Debug-iphoneos/PusherSwift.framework"; sourceTree = "<group>"; };
+		33F9905E1D5499060037E8C2 /* PusherSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = PusherSwift.framework; path = "/Users/Hami/Library/Developer/Xcode/DerivedData/PusherSwift-fxybzpephjfgfbhewmcxpfeoffko/Build/Products/Debug-iphonesimulator/PusherSwift.framework"; sourceTree = "<absolute>"; };
 		63B4963D1F9188B612AE6FB6 /* Pods-iOS Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Example/Pods-iOS Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33C69F161D26BEE100ABB47A /* PusherSwift.framework in Frameworks */,
+				33F9905F1D5499060037E8C2 /* PusherSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +58,7 @@
 		33831C551A9CEEE900B124F1 = {
 			isa = PBXGroup;
 			children = (
+				33F9905E1D5499060037E8C2 /* PusherSwift.framework */,
 				33831C601A9CEEE900B124F1 /* Example */,
 				33831C5F1A9CEEE900B124F1 /* Products */,
 				4102BF433CEEFDB30CDD25C0 /* Pods */,
@@ -121,7 +123,7 @@
 				33831C5A1A9CEEE900B124F1 /* Sources */,
 				33831C5B1A9CEEE900B124F1 /* Frameworks */,
 				33831C5C1A9CEEE900B124F1 /* Resources */,
-				33C69F191D26C21600ABB47A /* Embed Frameworks */,
+				33F990611D5499060037E8C2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -280,7 +282,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Example/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
@@ -299,7 +300,6 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = Example/Info.plist;

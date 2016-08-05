@@ -12,6 +12,8 @@ import PusherSwift
 class ViewController: UIViewController, ConnectionStateChangeDelegate {
     var pusher: Pusher! = nil
 
+    @IBOutlet weak var dataTextView: UITextView!
+
     @IBAction func connectButton(sender: AnyObject) {
         pusher.connect()
     }
@@ -23,47 +25,40 @@ class ViewController: UIViewController, ConnectionStateChangeDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Only use your secret here for testing or if you're sure that there's
-        // no security risk
-        let pusherClientOptions = PusherClientOptions(authMethod: .Internal(secret: "YOUR_APP_SECRET"))
-        pusher = Pusher(key: "YOUR_APP_KEY", options: pusherClientOptions)
+        let pusherClientOptions = PusherClientOptions(
+            authMethod: .Internal(secret: "9239025f4de0ce11c152"),
+            host: .Host("192.168.5.49"),
+            port: 8300,
+            encrypted: false
+        )
+        pusher = Pusher(key: "d44f5137e214349f7217", options: pusherClientOptions)
 
-        // remove the debugLogger from the client options if you want to remove the
-        // debug logging, or just change the function below
         let debugLogger = { (text: String) in debugPrint(text) }
         pusher.connection.debugLogger = debugLogger
-
         pusher.connection.stateChangeDelegate = self
-
         pusher.connect()
 
-        pusher.bind({ (message: AnyObject?) in
-            if let message = message as? [String: AnyObject], eventName = message["event"] as? String where eventName == "pusher:error" {
-                if let data = message["data"] as? [String: AnyObject], errorMessage = data["message"] as? String {
-                    print("Error message: \(errorMessage)")
+        let puppyStore = pusher.liveStore("puppies")
+        puppyStore.sync({ data in
+            if let data = data {
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.dataTextView.text = self.JSONStringify(data)
                 }
             }
         })
+    }
 
-        let onMemberAdded = { (member: PresenceChannelMember) in
-            print(member)
+    func JSONStringify(value: AnyObject) -> String {
+        if NSJSONSerialization.isValidJSONObject(value) {
+            do {
+                let data = try NSJSONSerialization.dataWithJSONObject(value, options: [])
+                if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
+                    return string as String
+                }
+            } catch _ {
+            }
         }
-
-        let chan = pusher.subscribe("presence-channel", onMemberAdded: onMemberAdded)
-
-        chan.bind("test-event", callback: { (data: AnyObject?) -> Void in
-            print(data)
-            self.pusher.subscribe("presence-channel", onMemberAdded: onMemberAdded)
-
-            if let data = data as? [String : AnyObject] {
-                if let testVal = data["test"] as? String {
-                    print(testVal)
-                }
-            }
-        })
-
-        // triggers a client event
-        chan.trigger("client-test", data: ["test": "some value"])
+        return ""
     }
 
     func connectionChange(old: ConnectionState, new: ConnectionState) {

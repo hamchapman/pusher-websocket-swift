@@ -96,6 +96,10 @@ public class Pusher {
     public func connect() {
         self.connection.connect()
     }
+
+    public func liveStore(name: String) -> LiveStore {
+        return LiveStore.init(name: name, pusher: self)
+    }
 }
 
 /**
