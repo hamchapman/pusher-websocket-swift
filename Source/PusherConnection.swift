@@ -26,6 +26,7 @@ public class PusherConnection {
     public var reconnectAttempts: Int = 0
     public var maxReconnectGapInSeconds: Double? = nil
     internal var reconnectTimer: NSTimer? = nil
+    public var liveStores: [LiveStore] = []
 
     public lazy var reachability: Reachability? = {
         let reachability = try? Reachability.reachabilityForInternetConnection()
@@ -290,6 +291,10 @@ public class PusherConnection {
                             print("Unable to subscribe to channel: \(channel.name)")
                         }
                     }
+                }
+
+                for liveStore in self.liveStores {
+                    liveStore.sync()
                 }
             }
         }

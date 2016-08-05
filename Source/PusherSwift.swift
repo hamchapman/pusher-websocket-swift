@@ -98,7 +98,9 @@ public class Pusher {
     }
 
     public func liveStore(name: String) -> LiveStore {
-        return LiveStore.init(name: name, pusher: self)
+        let liveStore = LiveStore.init(name: name, pusher: self)
+        self.connection.liveStores.append(liveStore)
+        return liveStore
     }
 }
 
