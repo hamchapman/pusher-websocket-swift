@@ -16,7 +16,6 @@ public class LiveStore {
     public init(name: String, pusher: Pusher) {
         self.name = name
         self.pusher = pusher
-        pusher.connect()
     }
 
     public func sync(callback: ((AnyObject?) -> Void)? = nil) {
